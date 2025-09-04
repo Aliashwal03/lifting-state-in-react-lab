@@ -1,24 +1,18 @@
-// src/components/IngredientList.jsx
+import Ingredient from './ingredient';
 
-const IngredientList = ({ ingredients, onAdd }) => {
+const IngredientList = ({ availableIngredients, addToBurger }) => {
   return (
-    <div>
-      <h2>Available Ingredients</h2>
-      {ingredients.map((item, idx) => (
-        <div
-          key={idx}
-          onClick={() => onAdd(item)}
-          style={{
-            backgroundColor: item.color,
-            padding: '10px',
-            margin: '5px',
-            cursor: 'pointer',
-          }}
-        >
-          {item.name}
-        </div>
+    <ul>
+      {availableIngredients.map((ingredient, index) => (
+        <li key={index}>
+          <Ingredient
+            ingredient={ingredient}
+            onAction={addToBurger}
+            actionLabel="+"
+          />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 
